@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import SearchIcon from "@mui/icons-material/Search";
-import Badge from '@mui/material/Badge';
+import Badge from "@mui/material/Badge";
 import AddShoppingCartOutlinedIcon from "@mui/icons-material/AddShoppingCartOutlined";
 
 const Container = styled.div`
@@ -51,6 +51,9 @@ const MenuItem = styled.div`
   margin-left: 25px;
 `;
 
+const Link = styled.a`
+  text-decoration: none;
+`
 const Navbar = () => {
   return (
     <Container>
@@ -59,15 +62,19 @@ const Navbar = () => {
           <Language>EN</Language>
           <SearchContainer>
             <Input />
-            <SearchIcon style={{color: "gray", fontSize: "16px"}} />
+            <SearchIcon style={{ color: "gray", fontSize: "16px" }} />
           </SearchContainer>
         </Left>
         <Center>
           <Logo>SkyShop</Logo>
         </Center>
         <Right>
-          <MenuItem>REGISTER</MenuItem>
-          <MenuItem>SIGN IN</MenuItem>
+          <MenuItem>
+            <Link href="/register">REGISTER</Link>
+          </MenuItem>
+          <MenuItem>
+            <Link href="/login">SIGN IN</Link>
+          </MenuItem>
           <MenuItem>
             <Badge badgeContent={4} color="primary">
               <AddShoppingCartOutlinedIcon />

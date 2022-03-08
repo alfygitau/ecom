@@ -31,7 +31,7 @@ const Form = styled.form`
 const Input = styled.input`
   flex: 1;
   min-width: 40%;
-  margin: 20px 10px 0px 0px;
+  margin: 20px 10px 20px 0px;
   padding: 10px;
 `;
 const Button = styled.button`
@@ -42,7 +42,12 @@ const Button = styled.button`
   color: white;
   cursor: pointer;
 `;
-const Link = styled.a``;
+const Link = styled.a`
+margin: 5px 0px;
+font-size: 12px;
+text-decoration: underline;
+cursor: pointer;
+`;
 
 const Login = () => {
   return (
