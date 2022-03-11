@@ -4,8 +4,10 @@ import styled from "styled-components";
 import { sliderItems } from "../../data";
 
 const Container = styled.div`
-  width: 100%;
-  height: 100vh;
+  width: 80%;
+  height: 80vh;
+  margin-right: auto;
+  margin-left: auto;
   display: flex;
   position: relative;
   overflow: hidden;
@@ -30,16 +32,18 @@ const Arrow = styled.div`
 `;
 
 const Wrapper = styled.div`
-  height: 100%;
+  height: 80%;
   display: flex;
   transition: all 1.5s ease;
-  transform: translateX(${props=>props.slideIndex * -100}vw);
+  transform: translateX(${props=>props.slideIndex * -80}vw);
 `;
 const Slide = styled.div`
   display: flex;
   align-items: center;
-  width: 100vw;
-  height: 100vh;
+  width: 80vw;
+  height: 80vh;
+  margin-right: auto;
+  margin-left: auto;
   background-color: #${(props) => props.bg};
 `;
 const ImgContainer = styled.div`
@@ -48,16 +52,15 @@ const ImgContainer = styled.div`
 `;
 const InfoContainer = styled.div`
   flex: 1;
-  padding: 50px;
+  padding: 20px;
 `;
 const Title = styled.h1`
-  font-size: 70px;
+  font-size: 50px;
 `;
 const Desc = styled.p`
-  margin: 50px 0px;
+  margin: 20px 0px;
   font-size: 20px;
   font-weight: 500;
-  letter-spacing: 3px;
 `;
 const Button = styled.button`
   padding: 10px;
@@ -66,7 +69,9 @@ const Button = styled.button`
   cursor: pointer;
 `;
 const Image = styled.img`
-  height: 80%;
+  height: 100%;
+  object-fit: contain;
+  width: 100%;
 `;
 
 const Slider = () => {
@@ -82,7 +87,7 @@ const Slider = () => {
 
   return (
     <Container>
-      <Arrow direction="left" onClick={() => handleClick("left")}>
+      <Arrow direction="left" onClick={() => handleClick("left")} >
         <ArrowLeftOutlined />
       </Arrow>
       <Wrapper slideIndex={slideIndex}>

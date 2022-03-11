@@ -5,8 +5,11 @@ import CategoryItem from "./CategoryItem";
 
 const Container = styled.div`
   display: flex;
-  padding: 20px;
+  padding: 10px;
   justify-content: space-between;
+  width: 80%;
+  margin-right: auto;
+  margin-left: auto;
 `;
 
 const Categories = () => {

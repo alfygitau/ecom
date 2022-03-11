@@ -76,9 +76,12 @@ const Footer = () => {
       <Left>
         <Logo>SkyShop</Logo>
         <Desc>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia beatae
-          consectetur itaque cumque mollitia omnis nihil at sit tempore sint,
-          error, eius obcaecati a, in placeat necessitatibus! Ad, ipsum quam?
+          SkyShopper is an Emirates NBD e-commerce venture specially designed
+          and initiated to give all its customers a friendly and exclusive
+          platform to get the smartest and best transaction in town! These Terms
+          and Conditions of use and any additional terms posted on this site
+          together constitute the entire agreement between Company and you with
+          respect to your use of this site.
         </Desc>
         <SocialContainer>
           <SocialIcon color="3B5999">

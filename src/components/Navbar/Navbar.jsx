@@ -5,7 +5,8 @@ import Badge from "@mui/material/Badge";
 import AddShoppingCartOutlinedIcon from "@mui/icons-material/AddShoppingCartOutlined";
 
 const Container = styled.div`
-  height: 60px;
+  height: 70px;
+  border-bottom: 5px solid rgb(231,235,240);
 `;
 const Wrapper = styled.div`
   padding: 10px 20px;
@@ -53,7 +54,7 @@ const MenuItem = styled.div`
 
 const Link = styled.a`
   text-decoration: none;
-`
+`;
 const Navbar = () => {
   return (
     <Container>
@@ -77,7 +78,9 @@ const Navbar = () => {
           </MenuItem>
           <MenuItem>
             <Badge badgeContent={4} color="primary">
-              <AddShoppingCartOutlinedIcon />
+              <Link href="/cart">
+                <AddShoppingCartOutlinedIcon />
+              </Link>
             </Badge>
           </MenuItem>
         </Right>

@@ -1,10 +1,11 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const Container = styled.div`
   flex: 1;
   margin: 10px;
-  height: 70vh;
+  height: 60vh;
   position: relative;
 `;
 const Image = styled.img`
@@ -41,11 +42,13 @@ const CategoryItem = ({ item }) => {
   console.log(item);
   return (
     <Container>
-      <Image src={item.img} />
-      <Info>
-        <Title>{item.title}</Title>
-        <Button>SHOP NOW</Button>
-      </Info>
+      <Link to={`/products/${item.category}`}>
+        <Image src={item.img} />
+        <Info>
+          <Title>{item.title}</Title>
+          <Button>SHOP NOW</Button>
+        </Info>
+      </Link>
     </Container>
   );
 };
