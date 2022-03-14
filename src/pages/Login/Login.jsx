@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
+import { login } from "../../redux/apiCalls";
 
 const Container = styled.div`
   height: 100vh;
@@ -16,7 +18,7 @@ const Container = styled.div`
   justify-content: center;
 `;
 const Wrapper = styled.div`
-  width:35%;
+  width: 35%;
   padding: 20px;
   background-color: white;
 `;
@@ -41,23 +43,54 @@ const Button = styled.button`
   background-color: teal;
   color: white;
   cursor: pointer;
+  &:disabled {
+    color: green;
+    cursor: not-allowed;
+  }
 `;
 const Link = styled.a`
-margin: 5px 0px;
-font-size: 12px;
-text-decoration: underline;
-cursor: pointer;
+  margin: 5px 0px;
+  font-size: 12px;
+  text-decoration: underline;
+  cursor: pointer;
+`;
+const Error = styled.span`
+  color: red;
 `;
 
 const Login = () => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  console.log(username, password);
+  const dispatch = useDispatch();
+
+  const { isFetching, error } = useSelector((state) => state.user);
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    login(dispatch, { username, password });
+  };
+
   return (
     <Container>
       <Wrapper>
         <Title>SIGN IN</Title>
         <Form>
-          <Input placeholder="Enter your username" />
-          <Input placeholder="Enter your password" />
-          <Button>LOG IN</Button>
+          <Input
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            placeholder="Enter your username"
+          />
+          <Input
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Enter your password"
+            type="password"
+          />
+          <Button onClick={handleLogin} disabled={isFetching}>
+            LOG IN
+          </Button>
+          {error && <Error>Something went wrong....</Error>}
           <Link>DO NOT REMEMBER YOUR PASSWORD</Link>
           <Link>CREATE A NEW ACCOUNT</Link>
         </Form>

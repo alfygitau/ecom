@@ -75,10 +75,10 @@ const Navbar = () => {
         </Center>
         <Right>
           <MenuItem>
-            <Link to="/register">REGISTER</Link>
+            <Link style={{textDecoration: "none"}} to="/register">REGISTER</Link>
           </MenuItem>
           <MenuItem>
-            <Link to="/login">SIGN IN</Link>
+            <Link style={{textDecoration: "none"}} to="/login">SIGN IN</Link>
           </MenuItem>
           <Link to="/cart">
             <MenuItem>

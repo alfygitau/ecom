@@ -6,7 +6,6 @@ import {
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-
 const Info = styled.div`
   opacity: 0;
   width: 100%;
@@ -35,17 +34,11 @@ const Container = styled.div`
   background-color: #f5fbfd;
   position: relative;
   border-radius: 10px;
+  flex-direction: column;
 
   &:hover ${Info} {
     opacity: 1;
   }
-`;
-const Circle = styled.div`
-  width: 300px;
-  height: 300px;
-  border-radius: 50%;
-  background-color: white;
-  position: absolute;
 `;
 const Image = styled.img`
   height: 75%;
@@ -70,10 +63,8 @@ const Icon = styled.div`
 `;
 
 const Product = ({ item }) => {
-
   return (
     <Container>
-      {/* <Circle /> */}
       <Image src={item.img} />
       <Info>
         <Icon>
@@ -88,6 +79,8 @@ const Product = ({ item }) => {
           <FavoriteBorderOutlined />
         </Icon>
       </Info>
+      <p>{item.title}</p>
+      <p>$ {item.price}</p>
     </Container>
   );
 };
