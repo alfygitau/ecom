@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Announcement from "../../components/Announcement/Announcement";
 import Footer from "../../components/Footer/Footer";
 import Navbar from "../../components/Navbar/Navbar";
+import { useSelector } from "react-redux";
 
 const Container = styled.div``;
 const Wrapper = styled.div`
@@ -125,6 +126,8 @@ const Button = styled.button`
 `;
 
 const Cart = () => {
+  const cart = useSelector((state) => state.cart);
+  console.log("cart", cart);
   return (
     <Container>
       <Navbar />
@@ -141,57 +144,38 @@ const Cart = () => {
         </Top>
         <Bottom>
           <Info>
-            <Product>
-              <ProductDetails>
-                <Image src="https://freepngimg.com/thumb/dress_shirt/8-2-dress-shirt-transparent.png" />
-                <Details>
-                  <ProductName>
-                    <b>Product:</b>FANCY THUNDER SHIRT
-                  </ProductName>
-                  <ProductId>
-                    <b>ID:</b>94567463348
-                  </ProductId>
-                  <ProductColor color="black" />
-                  <ProductSize>
-                    <b>SIZE:</b>37.5
-                  </ProductSize>
-                </Details>
-              </ProductDetails>
-              <PriceDetails>
-                <ProductAmountContainer>
-                  <Add />
-                  <ProductAmount>2</ProductAmount>
-                  <Remove />
-                </ProductAmountContainer>
-                <ProductPrice>$30</ProductPrice>
-              </PriceDetails>
-            </Product>
-            <Hr />
-            <Product>
-              <ProductDetails>
-                <Image src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrxTKCSjGbXDv_WDZ-mXx-8_P00_4LL8DLV0qLVDMiq-6H2gMNKi-iQHdzEhL5bw5r82A&usqp=CAU" />
-                <Details>
-                  <ProductName>
-                    <b>Product:</b>FANCY THUNDER SHIRT
-                  </ProductName>
-                  <ProductId>
-                    <b>ID:</b>94567463348
-                  </ProductId>
-                  <ProductColor color="black" />
-                  <ProductSize>
-                    <b>SIZE:</b>37.5
-                  </ProductSize>
-                </Details>
-              </ProductDetails>
-              <PriceDetails>
-                <ProductAmountContainer>
-                  <Add />
-                  <ProductAmount>10</ProductAmount>
-                  <Remove />
-                </ProductAmountContainer>
-                <ProductPrice>$20</ProductPrice>
-              </PriceDetails>
-            </Product>
+            {cart.products.map((product) => (
+              <Product key={product._id}>
+                <ProductDetails>
+                  <Image src={product.img} />
+                  <Details>
+                    <ProductName>
+                      <b>Product:</b>
+                      {product.title}
+                    </ProductName>
+                    <ProductId>
+                      <b>ID:</b>
+                      {product._id}
+                    </ProductId>
+                    <ProductColor color={product.color} />
+                    <ProductSize>
+                      <b>SIZE:</b>
+                      {product.size}
+                    </ProductSize>
+                  </Details>
+                </ProductDetails>
+                <PriceDetails>
+                  <ProductAmountContainer>
+                    <Add />
+                    <ProductAmount>{product.quantity}</ProductAmount>
+                    <Remove />
+                  </ProductAmountContainer>
+                  <ProductPrice>
+                    $ {product.price * product.quantity}
+                  </ProductPrice>
+                </PriceDetails>
+              </Product>
+            ))}
           </Info>
           <Summary>
             <SummaryTitle>ORDER SUMMARY</SummaryTitle>

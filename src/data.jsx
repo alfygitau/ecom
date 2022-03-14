@@ -26,20 +26,26 @@ export const categories = [
   {
     id: 1,
     img: "https://images.pexels.com/photos/5886041/pexels-photo-5886041.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-    title: "STYLISH WOMEN SHOES!",
-    category: "women's-shoes",
+    title: "STYLISH WOMEN TROUSERS!",
+    category: "trousers",
   },
   {
     id: 2,
     img: "https://images.pexels.com/photos/2983464/pexels-photo-2983464.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-    title: "MEN's CLAD",
-    category: "mens-shoes",
+    title: "WOMEN DRESSES",
+    category: "dresees",
   },
   {
     id: 3,
     img: "https://images.pexels.com/photos/5480696/pexels-photo-5480696.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
     title: "LIGHT JACKETS",
-    category: "jeans",
+    category: "jackets",
+  },
+  {
+    id: 4,
+    img: "https://images.unsplash.com/photo-1460353581641-37baddab0fa2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8c2hvZXN8ZW58MHx8MHx8&w=1000&q=80",
+    title: "FANCY SHOES",
+    category: "shoes",
   },
 ];
 

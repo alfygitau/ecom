@@ -1,11 +1,13 @@
 import { Add, Remove } from "@mui/icons-material";
 import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { useLocation } from "react-router";
 import styled from "styled-components";
 import Announcement from "../../components/Announcement/Announcement";
 import Footer from "../../components/Footer/Footer";
 import Navbar from "../../components/Navbar/Navbar";
 import Newsletter from "../../components/Newsletter/Newsletter";
+import { addProduct } from "../../redux/cartRedux";
 import { publicRequest } from "../../requestMethods";
 
 const Container = styled.div``;
@@ -111,6 +113,10 @@ const Product = () => {
 
   const [product, setProduct] = useState({});
   const [quantity, setQuantity] = useState(1);
+  const [color, setColor] = useState("");
+  const [size, setSize] = useState("");
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const getProduct = async () => {
@@ -130,10 +136,14 @@ const Product = () => {
     }
   };
 
+  const handleClick = () => {
+    dispatch(addProduct({ ...product, quantity, color, size }));
+  };
+
   return (
     <Container>
-      <Navbar />
       <Announcement />
+      <Navbar />
       <Wrapper>
         <ImgContainer>
           <Image src={product.img} />
@@ -146,12 +156,12 @@ const Product = () => {
             <Filter>
               <FilterTitle>Color</FilterTitle>
               {product.color?.map((c) => (
-                <FilterColor color={c} key={c} />
+                <FilterColor color={c} key={c} onClick={() => setColor(c)} />
               ))}
             </Filter>
             <Filter>
               <FilterTitle>Size</FilterTitle>
-              <FilterSize>
+              <FilterSize onChange={(e) => setSize(e.target.value)}>
                 {product.size?.map((s) => (
                   <FilterSizeOption key={s}>{s}</FilterSizeOption>
                 ))}
@@ -164,7 +174,7 @@ const Product = () => {
               <Amount>{quantity}</Amount>
               <Add onClick={() => handleQuantity("inc")} />
             </AmountContainer>
-            <Button>ADD TO CART</Button>
+            <Button onClick={handleClick}>ADD TO CART</Button>
           </AddContainer>
         </InfoContainer>
       </Wrapper>

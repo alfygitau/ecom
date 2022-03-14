@@ -3,10 +3,12 @@ import styled from "styled-components";
 import SearchIcon from "@mui/icons-material/Search";
 import Badge from "@mui/material/Badge";
 import AddShoppingCartOutlinedIcon from "@mui/icons-material/AddShoppingCartOutlined";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
   height: 70px;
-  border-bottom: 5px solid rgb(231,235,240);
+  border-bottom: 5px solid rgb(231, 235, 240);
 `;
 const Wrapper = styled.div`
   padding: 10px 20px;
@@ -52,10 +54,12 @@ const MenuItem = styled.div`
   margin-left: 25px;
 `;
 
-const Link = styled.a`
-  text-decoration: none;
-`;
+// const Link = styled.a`
+//   text-decoration: none;
+// `;
 const Navbar = () => {
+  const quantity = useSelector((state) => state.cart.quantity);
+  console.log("quantity", quantity);
   return (
     <Container>
       <Wrapper>
@@ -71,18 +75,18 @@ const Navbar = () => {
         </Center>
         <Right>
           <MenuItem>
-            <Link href="/register">REGISTER</Link>
+            <Link to="/register">REGISTER</Link>
           </MenuItem>
           <MenuItem>
-            <Link href="/login">SIGN IN</Link>
+            <Link to="/login">SIGN IN</Link>
           </MenuItem>
-          <MenuItem>
-            <Badge badgeContent={4} color="primary">
-              <Link href="/cart">
+          <Link to="/cart">
+            <MenuItem>
+              <Badge badgeContent={quantity} color="primary">
                 <AddShoppingCartOutlinedIcon />
-              </Link>
-            </Badge>
-          </MenuItem>
+              </Badge>
+            </MenuItem>
+          </Link>
         </Right>
       </Wrapper>
     </Container>
